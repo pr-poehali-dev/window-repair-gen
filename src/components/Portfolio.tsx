@@ -16,6 +16,27 @@ const Portfolio = () => {
       description:
         "Провели полную диагностику, смазку фурнитуры и герметизацию швов. Окна как новые.",
     },
+    {
+      image:
+        "https://cdn.poehali.dev/projects/c06e890d-dd38-4f55-966e-d5291c47e535/files/1461575a-34c2-427c-a131-0c45bf3a4f4c.jpg",
+      title: "Замена уплотнителя на 4 окнах",
+      description:
+        "Клиент жаловался на сквозняки. Заменили уплотнительную резину на всех окнах в квартире за 3 часа.",
+    },
+    {
+      image:
+        "https://cdn.poehali.dev/projects/c06e890d-dd38-4f55-966e-d5291c47e535/files/684c70e3-1986-4b60-96e4-e351005b6444.jpg",
+      title: "Ремонт фурнитуры балконной двери",
+      description:
+        "Дверь не закрывалась плотно. Заменили ножницы и петли, отрегулировали прижим — теперь работает идеально.",
+    },
+    {
+      image:
+        "https://cdn.poehali.dev/projects/c06e890d-dd38-4f55-966e-d5291c47e535/files/013a2b2c-d4ce-414a-ae3b-b698c849c088.jpg",
+      title: "Герметизация монтажных швов",
+      description:
+        "Промерзали откосы на кухне. Полностью переделали герметизацию — проблема решена, тепло сохраняется.",
+    },
   ];
 
   return (
@@ -25,7 +46,7 @@ const Portfolio = () => {
           Наши работы
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {works.map((work) => (
             <Card
               key={work.title}
