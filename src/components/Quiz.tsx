@@ -14,8 +14,11 @@ interface Answers {
   phone: string;
 }
 
+const API_URL = "https://newapi.ru/mfh/addorders?idp=c218122c-a113-1c8e-aa4abd611759ec31";
+
 const Quiz = () => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [submitting, setSubmitting] = useState(false);
   const [answers, setAnswers] = useState<Answers>({
     problem: "",
     count: "",
@@ -49,16 +52,75 @@ const Quiz = () => {
     setCurrentStep((prev) => prev + 1);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!answers.name.trim() || !answers.phone.trim()) return;
-    toast({
-      title: "Заявка отправлена!",
-      description:
-        "Наш специалист перезвонит вам в течение 5 минут.",
-    });
-    setCurrentStep(0);
-    setAnswers({ problem: "", count: "", timing: "", name: "", phone: "" });
+    setSubmitting(true);
+
+    try {
+      const comment = `Проблема: ${answers.problem}. Окон: ${answers.count}. Выезд: ${answers.timing}`;
+      const params = new URLSearchParams();
+      params.append("fullname", answers.name);
+      params.append("phone", answers.phone);
+      params.append("work", comment);
+      params.append("branch_id", "0");
+      params.append("is_pm", "false");
+      params.append("thread_id", "51414");
+      params.append("thread_type", "3");
+      params.append("sub_id1", "");
+      params.append("sub_id2", "");
+      params.append("sub_id3", "");
+      params.append("direction_id", "6");
+      params.append("offer_id", "60");
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmMap: Record<string, string> = {
+        utm_source: "utm1",
+        utm_medium: "utm2",
+        utm_campaign: "utm3",
+        utm_content: "utm4",
+        utm_term: "utm5",
+      };
+      for (const [key, val] of Object.entries(utmMap)) {
+        const v = urlParams.get(key);
+        if (v) params.append(val, v);
+      }
+
+      const win = window as unknown as Record<string, string>;
+      if (win.view_id) {
+        params.append("view_id", win.view_id);
+        params.append("hash", win.view_id);
+      }
+
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+      });
+
+      if (res.ok) {
+        toast({
+          title: "Заявка отправлена!",
+          description: "Наш специалист перезвонит вам в течение 5 минут.",
+        });
+        setCurrentStep(0);
+        setAnswers({ problem: "", count: "", timing: "", name: "", phone: "" });
+      } else {
+        toast({
+          title: "Ошибка отправки",
+          description: "Попробуйте ещё раз или позвоните нам.",
+          variant: "destructive",
+        });
+      }
+    } catch {
+      toast({
+        title: "Ошибка соединения",
+        description: "Проверьте интернет и попробуйте снова.",
+        variant: "destructive",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -182,9 +244,10 @@ const Quiz = () => {
                   />
                   <Button
                     type="submit"
+                    disabled={submitting}
                     className="w-full bg-secondary hover:bg-secondary/90 text-white font-semibold py-6 text-base"
                   >
-                    Получить консультацию
+                    {submitting ? "Отправка..." : "Получить консультацию"}
                   </Button>
                 </form>
               </Card>
