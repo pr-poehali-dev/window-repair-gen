@@ -47,6 +47,22 @@ const Quiz = () => {
     "В удобное время",
   ];
 
+  const formatPhone = (value: string) => {
+    const digits = value.replace(/\D/g, "").slice(0, 11);
+    if (digits.length === 0) return "";
+    let result = "+7";
+    if (digits.length > 1) result += " (" + digits.slice(1, 4);
+    if (digits.length >= 4) result += ") " + digits.slice(4, 7);
+    if (digits.length >= 7) result += "-" + digits.slice(7, 9);
+    if (digits.length >= 9) result += "-" + digits.slice(9, 11);
+    return result;
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhone(e.target.value);
+    setAnswers((prev) => ({ ...prev, phone: formatted }));
+  };
+
   const selectOption = (field: keyof Answers, value: string) => {
     setAnswers((prev) => ({ ...prev, [field]: value }));
     setCurrentStep((prev) => prev + 1);
@@ -233,14 +249,9 @@ const Quiz = () => {
                   />
                   <Input
                     type="tel"
-                    placeholder="Телефон"
+                    placeholder="+7 (___) ___-__-__"
                     value={answers.phone}
-                    onChange={(e) =>
-                      setAnswers((prev) => ({
-                        ...prev,
-                        phone: e.target.value,
-                      }))
-                    }
+                    onChange={handlePhoneChange}
                   />
                   <Button
                     type="submit"
