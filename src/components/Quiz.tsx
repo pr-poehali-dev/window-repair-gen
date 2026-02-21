@@ -108,30 +108,28 @@ const Quiz = () => {
         params.append("hash", win.view_id);
       }
 
-      const res = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: params.toString(),
+      await new Promise<void>((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", API_URL, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onload = () => {
+          if (xhr.status === 200) resolve();
+          else reject(new Error(String(xhr.status)));
+        };
+        xhr.onerror = () => reject(new Error("network"));
+        xhr.send(params.toString());
       });
 
-      if (res.ok) {
-        toast({
-          title: "Заявка отправлена!",
-          description: "Наш специалист перезвонит вам в течение 5 минут.",
-        });
-        setCurrentStep(0);
-        setAnswers({ problem: "", count: "", timing: "", name: "", phone: "" });
-      } else {
-        toast({
-          title: "Ошибка отправки",
-          description: "Попробуйте ещё раз или позвоните нам.",
-          variant: "destructive",
-        });
-      }
+      toast({
+        title: "Заявка отправлена!",
+        description: "Наш специалист перезвонит вам в течение 5 минут.",
+      });
+      setCurrentStep(0);
+      setAnswers({ problem: "", count: "", timing: "", name: "", phone: "" });
     } catch {
       toast({
-        title: "Ошибка соединения",
-        description: "Проверьте интернет и попробуйте снова.",
+        title: "Ошибка отправки",
+        description: "Попробуйте ещё раз или позвоните нам.",
         variant: "destructive",
       });
     } finally {
