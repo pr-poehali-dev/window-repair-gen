@@ -6,7 +6,6 @@ import Quiz from "@/components/Quiz";
 import Advantages from "@/components/Advantages";
 import Process from "@/components/Process";
 import Prices from "@/components/Prices";
-import CtaBanner from "@/components/CtaBanner";
 import Faq from "@/components/Faq";
 import Reviews from "@/components/Reviews";
 import PromoCountdown from "@/components/PromoCountdown";
@@ -24,7 +23,6 @@ const Index = () => {
       <Advantages />
       <Process />
       <Prices />
-      <CtaBanner />
       <Faq />
       <Reviews />
       <PromoCountdown />
