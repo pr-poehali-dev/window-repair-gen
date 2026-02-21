@@ -8,6 +8,7 @@ import Process from "@/components/Process";
 import Portfolio from "@/components/Portfolio";
 import CtaBanner from "@/components/CtaBanner";
 import Faq from "@/components/Faq";
+import PromoCountdown from "@/components/PromoCountdown";
 import Footer from "@/components/Footer";
 import FloatingButtons from "@/components/FloatingButtons";
 
@@ -24,6 +25,7 @@ const Index = () => {
       <Portfolio />
       <CtaBanner />
       <Faq />
+      <PromoCountdown />
       <Footer />
       <FloatingButtons />
     </div>
