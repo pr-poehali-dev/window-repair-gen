@@ -14,7 +14,7 @@ interface Answers {
   phone: string;
 }
 
-const API_URL = "https://newapi.ru/mfh/addorders?idp=c218122c-a113-1c8e-aa4abd611759ec31";
+const PROXY_URL = "https://functions.poehali.dev/89c9c165-6f43-45cf-b46a-bd3a91ae9eb6";
 
 const Quiz = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -108,17 +108,16 @@ const Quiz = () => {
         params.append("hash", win.view_id);
       }
 
-      await new Promise<void>((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", API_URL, true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onload = () => {
-          if (xhr.status === 200) resolve();
-          else reject(new Error(String(xhr.status)));
-        };
-        xhr.onerror = () => reject(new Error("network"));
-        xhr.send(params.toString());
+      const body: Record<string, string> = {};
+      for (const [k, v] of params.entries()) body[k] = v;
+
+      const res = await fetch(PROXY_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
       });
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error || "fail");
 
       toast({
         title: "Заявка отправлена!",

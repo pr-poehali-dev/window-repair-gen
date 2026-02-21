@@ -1,0 +1,29 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "POST form data",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "fullname": "Тест",
+        "phone": "+7 (999) 000-00-00",
+        "work": "Тест",
+        "branch_id": "0",
+        "is_pm": "false",
+        "thread_id": "51414",
+        "thread_type": "3",
+        "direction_id": "6",
+        "offer_id": "60"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {"ok": true},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
