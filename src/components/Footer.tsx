@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 
 const Footer = () => {
@@ -31,12 +32,12 @@ const Footer = () => {
 
           <div>
             <h4 className="font-semibold mb-4">Информация</h4>
-            <a
-              href="#"
+            <Link
+              to="/privacy"
               className="text-white/80 hover:text-white transition-colors text-sm"
             >
               Политика конфиденциальности
-            </a>
+            </Link>
           </div>
         </div>
 
