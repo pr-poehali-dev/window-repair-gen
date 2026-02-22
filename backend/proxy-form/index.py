@@ -58,8 +58,9 @@ def handler(event: dict, context) -> dict:
 
         try:
             send_email(body)
-        except Exception:
-            pass
+            print("Email sent successfully")
+        except Exception as email_err:
+            print(f"Email error: {email_err}")
 
         return {
             "statusCode": 200,
