@@ -1,4 +1,4 @@
-"""Проксирует отправку формы в newapi.ru и дублирует заявку на email."""
+"""Проксирует отправку формы в newapi.ru, дублирует заявку на email и отправляет уведомление в Telegram."""
 import json
 import os
 import smtplib
@@ -14,6 +14,28 @@ CORS_HEADERS = {
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
 }
+
+
+def send_telegram(data: dict):
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "")
+    if not token or not chat_id:
+        return
+
+    name = data.get("fullname", "—")
+    phone = data.get("phone", "—")
+    work = data.get("work", "—")
+
+    text = f"📋 *Новая заявка с сайта!*\n\n👤 Имя: {name}\n📞 Телефон: {phone}\n💬 Комментарий: {work}"
+
+    payload = json.dumps({"chat_id": chat_id, "text": text, "parse_mode": "Markdown"}).encode("utf-8")
+    req = urllib.request.Request(
+        f"https://api.telegram.org/bot{token}/sendMessage",
+        data=payload,
+        method="POST",
+        headers={"Content-Type": "application/json"},
+    )
+    urllib.request.urlopen(req, timeout=10)
 
 
 def send_email(data: dict):
@@ -61,6 +83,12 @@ def handler(event: dict, context) -> dict:
             print("Email sent successfully")
         except Exception as email_err:
             print(f"Email error: {email_err}")
+
+        try:
+            send_telegram(body)
+            print("Telegram sent successfully")
+        except Exception as tg_err:
+            print(f"Telegram error: {tg_err}")
 
         return {
             "statusCode": 200,
