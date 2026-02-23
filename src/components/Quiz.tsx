@@ -37,7 +37,7 @@ const Quiz = () => {
     { label: "Замена уплотнителя", icon: "Shield" },
     { label: "Сломалась фурнитура", icon: "Wrench" },
     { label: "Треснул стеклопакет", icon: "AlertTriangle" },
-    { label: "Нужна диагностика", icon: "Search" },
+    { label: "Нужна консультация", icon: "Search" },
   ];
 
   const counts = ["1", "2", "3 и более", "Не знаю"];
