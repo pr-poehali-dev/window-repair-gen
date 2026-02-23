@@ -17,11 +17,17 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Контакты</h4>
             <div className="space-y-3">
               <a
-                href="tel:+78005553535"
-                className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm"
+                href="tel:+79675553503"
+                className="flex flex-col gap-1 text-white/80 hover:text-white transition-colors text-sm"
               >
-                <Icon name="Phone" size={16} />
-                +7 (800) 555-35-35
+                <span className="flex items-center gap-2">
+                  <Icon name="Phone" size={16} />
+                  +7 (967) 555-35-03
+                </span>
+                <span className="flex items-center gap-1.5 ml-6 text-xs text-white/50">
+                  <span className="w-2 h-2 rounded-full bg-green-500 pulse-dot inline-block" />
+                  Звоните, мы работаем
+                </span>
               </a>
               <div className="flex items-center gap-2 text-white/80 text-sm">
                 <Icon name="Clock" size={16} />

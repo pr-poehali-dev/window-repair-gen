@@ -59,11 +59,17 @@ const Header = () => {
         </nav>
 
         <a
-          href="tel:+78005553535"
-          className="hidden md:flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors"
+          href="tel:+79675553503"
+          className="hidden md:flex flex-col items-start gap-0"
         >
-          <Icon name="Phone" size={16} />
-          +7 (800) 555-35-35
+          <span className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors">
+            <Icon name="Phone" size={16} />
+            +7 (967) 555-35-03
+          </span>
+          <span className="flex items-center gap-1.5 ml-6 text-xs text-muted-foreground">
+            <span className="w-2 h-2 rounded-full bg-green-500 pulse-dot inline-block" />
+            Звоните, мы работаем
+          </span>
         </a>
 
         <Button
@@ -93,11 +99,17 @@ const Header = () => {
               </a>
             ))}
             <a
-              href="tel:+78005553535"
-              className="flex items-center gap-2 text-sm font-semibold text-primary py-2"
+              href="tel:+79675553503"
+              className="flex flex-col gap-0 py-2"
             >
-              <Icon name="Phone" size={16} />
-              +7 (800) 555-35-35
+              <span className="flex items-center gap-2 text-sm font-semibold text-primary">
+                <Icon name="Phone" size={16} />
+                +7 (967) 555-35-03
+              </span>
+              <span className="flex items-center gap-1.5 ml-6 text-xs text-muted-foreground">
+                <span className="w-2 h-2 rounded-full bg-green-500 pulse-dot inline-block" />
+                Звоните, мы работаем
+              </span>
             </a>
           </nav>
         </div>

@@ -38,13 +38,14 @@ const Hero = () => {
               <Icon name="Phone" size={20} className="text-primary" />
               <div>
                 <a
-                  href="tel:+78005553535"
+                  href="tel:+79675553503"
                   className="text-lg font-bold text-foreground hover:text-primary transition-colors"
                 >
-                  +7 (800) 555-35-35
+                  +7 (967) 555-35-03
                 </a>
-                <p className="text-sm text-muted-foreground">
-                  Ежедневно 10:00–22:00
+                <p className="flex items-center gap-1.5 text-sm text-muted-foreground mt-0.5">
+                  <span className="w-2 h-2 rounded-full bg-green-500 pulse-dot inline-block" />
+                  Звоните, мы работаем
                 </p>
               </div>
             </div>
