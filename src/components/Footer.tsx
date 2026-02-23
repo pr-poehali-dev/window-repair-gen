@@ -52,7 +52,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/10 mt-8 pt-8 text-center text-sm text-white/50">
-          &copy; 2025 ОкнаСервис. Все права защищены.
+          &copy; 2025 СервисОК. Все права защищены.
         </div>
       </div>
     </footer>
