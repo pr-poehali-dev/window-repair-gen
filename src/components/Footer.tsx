@@ -10,7 +10,7 @@ const Footer = () => {
             <img
               src="https://cdn.poehali.dev/projects/c06e890d-dd38-4f55-966e-d5291c47e535/bucket/6e4fb0e0-91cb-4dee-9ca9-69e70d54e9bf.png"
               alt="СервисОК"
-              className="h-14 w-auto object-contain mb-4 brightness-0 invert"
+              className="h-14 w-auto object-contain mb-4 bg-white rounded-lg p-2"
             />
             <p className="text-white/60 text-sm">
               Профессиональный ремонт пластиковых окон в вашем городе.
