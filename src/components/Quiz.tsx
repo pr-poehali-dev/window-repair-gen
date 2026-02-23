@@ -119,6 +119,9 @@ const Quiz = () => {
       const data = await res.json();
       if (!data.ok) throw new Error(data.error || "fail");
 
+      if (typeof window !== 'undefined' && (window as unknown as Record<string, unknown>).ym) {
+        (window as unknown as Record<string, (id: number, goal: string, target: string) => void>).ym(106968421, 'reachGoal', 'send_form');
+      }
       toast({
         title: "Заявка отправлена!",
         description: "Наш специалист перезвонит вам в течение 5 минут.",
