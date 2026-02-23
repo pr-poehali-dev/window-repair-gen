@@ -18,7 +18,7 @@ const Hero = () => {
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="animate-fade-in">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-foreground mb-4">
-              Ремонт пластиковых окон{" "}
+              Ремонт и обслуживание окон{" "}
               <span className="text-primary">за 1 день</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
