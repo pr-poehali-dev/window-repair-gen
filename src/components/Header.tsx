@@ -37,9 +37,13 @@ const Header = () => {
             e.preventDefault();
             handleNav("#hero");
           }}
-          className="text-xl font-bold text-primary"
+          className="flex items-center"
         >
-          ОкнаСервис
+          <img
+            src="https://cdn.poehali.dev/projects/c06e890d-dd38-4f55-966e-d5291c47e535/bucket/44656314-0fc6-4e33-a943-5a0ee0094e80.png"
+            alt="СервисОК"
+            className="h-10 w-auto object-contain"
+          />
         </a>
 
         <nav className="hidden md:flex items-center gap-6">

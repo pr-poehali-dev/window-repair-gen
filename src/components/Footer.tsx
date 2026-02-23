@@ -7,7 +7,11 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
-            <span className="text-xl font-bold mb-4 block">ОкнаСервис</span>
+            <img
+              src="https://cdn.poehali.dev/projects/c06e890d-dd38-4f55-966e-d5291c47e535/bucket/44656314-0fc6-4e33-a943-5a0ee0094e80.png"
+              alt="СервисОК"
+              className="h-12 w-auto object-contain mb-4 brightness-0 invert"
+            />
             <p className="text-white/60 text-sm">
               Профессиональный ремонт пластиковых окон в вашем городе.
             </p>
