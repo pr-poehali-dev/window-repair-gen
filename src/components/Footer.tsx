@@ -8,9 +8,9 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8">
           <div>
             <img
-              src="https://cdn.poehali.dev/projects/c06e890d-dd38-4f55-966e-d5291c47e535/bucket/44656314-0fc6-4e33-a943-5a0ee0094e80.png"
+              src="https://cdn.poehali.dev/projects/c06e890d-dd38-4f55-966e-d5291c47e535/bucket/6e4fb0e0-91cb-4dee-9ca9-69e70d54e9bf.png"
               alt="СервисОК"
-              className="h-12 w-auto object-contain mb-4 brightness-0 invert"
+              className="h-14 w-auto object-contain mb-4 brightness-0 invert"
             />
             <p className="text-white/60 text-sm">
               Профессиональный ремонт пластиковых окон в вашем городе.
