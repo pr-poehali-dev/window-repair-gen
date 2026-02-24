@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
@@ -27,6 +28,7 @@ const Quiz = () => {
     phone: "",
   });
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const totalSteps = 4;
   const progressValue = ((currentStep + 1) / totalSteps) * 100;
@@ -122,11 +124,7 @@ const Quiz = () => {
       if (typeof window !== 'undefined' && (window as unknown as Record<string, unknown>).ym) {
         (window as unknown as Record<string, (id: number, goal: string, target: string) => void>).ym(106938964, 'reachGoal', 'send_form');
       }
-      toast({
-        title: "Заявка отправлена!",
-        description: "Наш специалист перезвонит вам в течение 5 минут.",
-      });
-      setCurrentStep(0);
+      navigate("/submitted");
       setAnswers({ problem: "", count: "", timing: "", name: "", phone: "" });
     } catch {
       toast({
