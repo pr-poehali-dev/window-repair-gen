@@ -1,7 +1,14 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 
+declare const ym: (...args: unknown[]) => void;
+
 const Submitted = () => {
+  useEffect(() => {
+    ym(106938964, 'reachGoal', 'send_form');
+  }, []);
+
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-start py-12 px-4">
       <div className="max-w-2xl w-full">
