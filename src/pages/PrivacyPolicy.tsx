@@ -110,7 +110,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-xl font-semibold mb-3">9. Контактная информация</h2>
             <p className="text-muted-foreground leading-relaxed">
               По вопросам, связанным с обработкой персональных данных, вы можете связаться с нами
-              по телефону: <a href="tel:+79675553503" className="text-primary hover:underline">+7 (967) 555-35-03</a>.
+              по телефону: <a href="tel:+79016208985" className="text-primary hover:underline">+7 (901) 620-89-85</a>.
             </p>
           </section>
 

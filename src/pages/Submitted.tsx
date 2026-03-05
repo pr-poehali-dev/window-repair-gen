@@ -27,10 +27,10 @@ const Submitted = () => {
             📞 Если вопрос срочный — позвоните нам прямо сейчас:
           </p>
           <a
-            href="tel:+79675553503"
+            href="tel:+79016208985"
             className="text-2xl font-bold text-primary hover:underline"
           >
-            +7 (967) 555-35-03
+            +7 (901) 620-89-85
           </a>
         </div>
 

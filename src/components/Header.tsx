@@ -63,12 +63,12 @@ const Header = () => {
         </nav>
 
         <a
-          href="tel:+79675553503"
+          href="tel:+79016208985"
           className="hidden md:flex flex-col items-start gap-0"
         >
           <span className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors">
             <Icon name="Phone" size={16} />
-            +7 (967) 555-35-03
+            +7 (901) 620-89-85
           </span>
           <span className="flex items-center gap-1.5 ml-6 text-xs text-muted-foreground">
             <span className="w-2 h-2 rounded-full bg-green-500 pulse-dot inline-block" />
@@ -103,12 +103,12 @@ const Header = () => {
               </a>
             ))}
             <a
-              href="tel:+79675553503"
+              href="tel:+79016208985"
               className="flex flex-col gap-0 py-2"
             >
               <span className="flex items-center gap-2 text-sm font-semibold text-primary">
                 <Icon name="Phone" size={16} />
-                +7 (967) 555-35-03
+                +7 (901) 620-89-85
               </span>
               <span className="flex items-center gap-1.5 ml-6 text-xs text-muted-foreground">
                 <span className="w-2 h-2 rounded-full bg-green-500 pulse-dot inline-block" />
