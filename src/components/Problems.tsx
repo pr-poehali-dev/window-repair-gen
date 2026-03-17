@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { useModal } from "@/context/ModalContext";
 
 const Problems = () => {
+  const { openModal } = useModal();
   const problems = [
     "Дует из окна",
     "Появился сквозняк",
@@ -44,7 +46,7 @@ const Problems = () => {
           <Button
             size="lg"
             className="bg-secondary hover:bg-secondary/90 text-white font-semibold px-8 py-6 text-base"
-            onClick={scrollToQuiz}
+            onClick={openModal}
           >
             Вызвать мастера
             <Icon name="ArrowRight" size={20} />

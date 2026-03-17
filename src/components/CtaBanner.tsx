@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { useModal } from "@/context/ModalContext";
 
 const CtaBanner = () => {
-  const scrollToQuiz = () => {
-    document.querySelector("#quiz")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const { openModal } = useModal();
 
   return (
     <section className="py-16 md:py-20 bg-gradient-to-r from-primary to-secondary">
@@ -16,7 +15,7 @@ const CtaBanner = () => {
           size="lg"
           variant="outline"
           className="bg-white text-primary hover:bg-white/90 border-white font-semibold px-8 py-6 text-base"
-          onClick={scrollToQuiz}
+          onClick={openModal}
         >
           Вызвать специалиста
           <Icon name="ArrowRight" size={20} />

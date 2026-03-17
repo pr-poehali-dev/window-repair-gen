@@ -1,3 +1,5 @@
+import { useModal } from "@/context/ModalContext";
+
 const prices = [
   { title: "Замена уплотнителя", price: "от 1200 ₽" },
   { title: "Регулировка створки окна винтовая", price: "от 1200 ₽" },
@@ -13,7 +15,9 @@ const prices = [
   { title: "Замена ручки окна", price: "от 500 ₽" },
 ];
 
-const Prices = () => (
+const Prices = () => {
+  const { openModal } = useModal();
+  return (
   <section id="prices" className="py-16 md:py-24 bg-white">
     <div className="container mx-auto px-4 max-w-5xl">
       <h2 className="text-2xl md:text-3xl font-bold mb-10">Цены</h2>
@@ -31,15 +35,16 @@ const Prices = () => (
       </div>
 
       <div className="flex justify-center">
-        <a
-          href="#quiz"
+        <button
+          onClick={openModal}
           className="bg-primary hover:bg-primary/90 text-white font-semibold px-10 py-3 rounded-full transition-colors text-sm"
         >
           Вызвать мастера
-        </a>
+        </button>
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default Prices;

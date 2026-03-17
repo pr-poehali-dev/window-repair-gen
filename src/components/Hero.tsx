@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
-import PhoneModal from "@/components/PhoneModal";
+import { useModal } from "@/context/ModalContext";
 
 const Hero = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const { openModal } = useModal();
 
   const scrollToQuiz = () => {
     document.querySelector("#quiz")?.scrollIntoView({ behavior: "smooth" });
@@ -39,11 +38,11 @@ const Hero = () => {
             </Button>
 
             <button
-              onClick={() => setModalOpen(true)}
+              onClick={openModal}
               className="flex items-center gap-3 mb-8 group text-left"
             >
               <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <Icon name="Phone" size={20} className="text-primary" />
+                <Icon name="MessageCircle" size={20} className="text-primary" />
               </div>
               <div>
                 <div className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
@@ -70,8 +69,6 @@ const Hero = () => {
             </div>
           </div>
 
-          <PhoneModal open={modalOpen} onClose={() => setModalOpen(false)} />
-
           <div className="animate-slide-up order-first md:order-last">
             <img
               src="https://cdn.poehali.dev/projects/c06e890d-dd38-4f55-966e-d5291c47e535/files/26dc20cc-0fe9-4796-b48f-a5bdb6d68334.jpg"
@@ -84,6 +81,5 @@ const Hero = () => {
     </section>
   );
 };
-
 
 export default Hero;

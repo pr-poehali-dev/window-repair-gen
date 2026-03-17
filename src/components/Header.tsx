@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { useModal } from "@/context/ModalContext";
 
 const Header = () => {
+  const { openModal } = useModal();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -62,19 +64,19 @@ const Header = () => {
           ))}
         </nav>
 
-        <a
-          href="tel:+79016208985"
-          className="hidden md:flex flex-col items-start gap-0"
+        <button
+          onClick={openModal}
+          className="hidden md:flex flex-col items-start gap-0 group"
         >
-          <span className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors">
-            <Icon name="Phone" size={16} />
-            +7 (901) 620-89-85
+          <span className="flex items-center gap-2 text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+            <Icon name="MessageCircle" size={16} />
+            Перезвоните мне
           </span>
           <span className="flex items-center gap-1.5 ml-6 text-xs text-muted-foreground">
             <span className="w-2 h-2 rounded-full bg-green-500 pulse-dot inline-block" />
-            Звоните, мы работаем
+            Скидка 20% на первый заказ
           </span>
-        </a>
+        </button>
 
         <Button
           variant="ghost"
@@ -102,19 +104,19 @@ const Header = () => {
                 {link.label}
               </a>
             ))}
-            <a
-              href="tel:+79016208985"
-              className="flex flex-col gap-0 py-2"
+            <button
+              onClick={() => { setMobileOpen(false); openModal(); }}
+              className="flex flex-col gap-0 py-2 text-left"
             >
               <span className="flex items-center gap-2 text-sm font-semibold text-primary">
-                <Icon name="Phone" size={16} />
-                +7 (901) 620-89-85
+                <Icon name="MessageCircle" size={16} />
+                Перезвоните мне
               </span>
               <span className="flex items-center gap-1.5 ml-6 text-xs text-muted-foreground">
                 <span className="w-2 h-2 rounded-full bg-green-500 pulse-dot inline-block" />
-                Звоните, мы работаем
+                Скидка 20% на первый заказ
               </span>
-            </a>
+            </button>
           </nav>
         </div>
       )}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useModal } from "@/context/ModalContext";
 
 const TARGET_DAYS = 9;
 const TARGET_HOURS = 1;
@@ -27,6 +28,7 @@ const getInitialSeconds = () => {
 };
 
 const PromoCountdown = () => {
+  const { openModal } = useModal();
   const [total, setTotal] = useState(getInitialSeconds);
 
   useEffect(() => {
@@ -78,12 +80,12 @@ const PromoCountdown = () => {
             <p className="text-white/80 text-base mb-6">
               и получите скидку 20% при первом обращении
             </p>
-            <a
-              href="#quiz"
+            <button
+              onClick={openModal}
               className="inline-block bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 rounded-full transition-colors text-sm"
             >
               Вызвать мастера
-            </a>
+            </button>
             <p className="text-white/50 text-xs mt-4">
               Нажимая кнопку "Вызвать мастера", я даю согласие на обработку
               персональных данных
