@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
 import PhoneModal from "@/components/PhoneModal";
 
 const FloatingButtons = () => {
   const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setModalOpen(true), 40000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
