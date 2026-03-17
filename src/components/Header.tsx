@@ -64,19 +64,16 @@ const Header = () => {
           ))}
         </nav>
 
-        <button
-          onClick={openModal}
-          className="hidden md:flex flex-col items-start gap-0 group"
-        >
+        <a href="tel:+79016208985" className="hidden md:flex flex-col items-start gap-0 group">
           <span className="flex items-center gap-2 text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
-            <Icon name="MessageCircle" size={16} />
-            Перезвоните мне
+            <Icon name="Phone" size={16} />
+            +7 (901) 620-89-85
           </span>
           <span className="flex items-center gap-1.5 ml-6 text-xs text-muted-foreground">
             <span className="w-2 h-2 rounded-full bg-green-500 pulse-dot inline-block" />
-            Скидка 20% на первый заказ
+            Звоните, мы работаем
           </span>
-        </button>
+        </a>
 
         <Button
           variant="ghost"
@@ -104,19 +101,16 @@ const Header = () => {
                 {link.label}
               </a>
             ))}
-            <button
-              onClick={() => { setMobileOpen(false); openModal(); }}
-              className="flex flex-col gap-0 py-2 text-left"
-            >
+            <a href="tel:+79016208985" className="flex flex-col gap-0 py-2">
               <span className="flex items-center gap-2 text-sm font-semibold text-primary">
-                <Icon name="MessageCircle" size={16} />
-                Перезвоните мне
+                <Icon name="Phone" size={16} />
+                +7 (901) 620-89-85
               </span>
               <span className="flex items-center gap-1.5 ml-6 text-xs text-muted-foreground">
                 <span className="w-2 h-2 rounded-full bg-green-500 pulse-dot inline-block" />
-                Скидка 20% на первый заказ
+                Звоните, мы работаем
               </span>
-            </button>
+            </a>
           </nav>
         </div>
       )}
