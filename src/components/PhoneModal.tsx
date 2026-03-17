@@ -19,13 +19,30 @@ interface PhoneModalProps {
 const PhoneModal = ({ open, onClose }: PhoneModalProps) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+
+  const formatPhone = (value: string) => {
+    const digits = value.replace(/\D/g, "").replace(/^8/, "7").replace(/^7?/, "7").slice(0, 11);
+    const d = digits.slice(1);
+    if (d.length === 0) return "+7";
+    if (d.length <= 3) return `+7 (${d}`;
+    if (d.length <= 6) return `+7 (${d.slice(0, 3)}) ${d.slice(3)}`;
+    if (d.length <= 8) return `+7 (${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`;
+    return `+7 (${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6, 8)}-${d.slice(8, 10)}`;
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhone(e.target.value);
+    setPhone(formatted);
+  };
+
+  const isPhoneComplete = phone.replace(/\D/g, "").length === 11;
   const [submitting, setSubmitting] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!phone.trim()) return;
+    if (!isPhoneComplete) return;
     setSubmitting(true);
 
     try {
@@ -115,9 +132,10 @@ const PhoneModal = ({ open, onClose }: PhoneModalProps) => {
           <Input
             placeholder="+7 (___) ___-__-__"
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={handlePhoneChange}
             required
             type="tel"
+            inputMode="numeric"
             className="h-11"
           />
 
@@ -125,7 +143,7 @@ const PhoneModal = ({ open, onClose }: PhoneModalProps) => {
             type="submit"
             size="lg"
             className="w-full bg-secondary hover:bg-secondary/90 text-white font-semibold h-12 text-base"
-            disabled={submitting}
+            disabled={submitting || !isPhoneComplete}
           >
             {submitting ? (
               <>
