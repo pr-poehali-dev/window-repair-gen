@@ -5,15 +5,24 @@ const TARGET_HOURS = 1;
 const TARGET_MINUTES = 54;
 const TARGET_SECONDS = 53;
 
+const CYCLE = 7 * 86400;
+
 const getInitialSeconds = () => {
   const stored = localStorage.getItem("promo_end_ts");
-  if (stored) return Math.max(0, Math.floor((Number(stored) - Date.now()) / 1000));
+  const now = Date.now();
+  if (stored) {
+    const remaining = Math.floor((Number(stored) - now) / 1000);
+    if (remaining > 0) return remaining;
+    const next = Number(stored) + CYCLE * 1000;
+    localStorage.setItem("promo_end_ts", String(next));
+    return Math.max(0, Math.floor((next - now) / 1000));
+  }
   const total =
     TARGET_DAYS * 86400 +
     TARGET_HOURS * 3600 +
     TARGET_MINUTES * 60 +
     TARGET_SECONDS;
-  localStorage.setItem("promo_end_ts", String(Date.now() + total * 1000));
+  localStorage.setItem("promo_end_ts", String(now + total * 1000));
   return total;
 };
 
@@ -21,7 +30,16 @@ const PromoCountdown = () => {
   const [total, setTotal] = useState(getInitialSeconds);
 
   useEffect(() => {
-    const id = setInterval(() => setTotal((t) => Math.max(0, t - 1)), 1000);
+    const id = setInterval(() => {
+      setTotal((t) => {
+        if (t <= 1) {
+          const next = Date.now() + CYCLE * 1000;
+          localStorage.setItem("promo_end_ts", String(next));
+          return CYCLE;
+        }
+        return t - 1;
+      });
+    }, 1000);
     return () => clearInterval(id);
   }, []);
 
